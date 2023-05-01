@@ -51,7 +51,7 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <Link className="normal-case text-xl font-bold flex items-center">
+            <Link to="/" className="normal-case text-xl font-bold flex items-center">
               <FaHamburger className="hidden lg:block h-6 w-6 text-yellow-500 " />{" "}
               Food<span className="text-red-400">Wagon</span>
             </Link>
