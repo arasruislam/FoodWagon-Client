@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <>
       <Header />
-      <div className="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl mt-20 min-h-[calc(100vh-256px)]">
+      <div className="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl mt-16 min-h-[calc(100vh-256px)]">
         <Outlet />
       </div>
       <Footer />
