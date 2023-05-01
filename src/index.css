@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active {
+    @apply font-medium tracking-wide text-red-600 transition-colors duration-200 hover:text-red-400;
+}
+
+.default {
+    @apply font-medium tracking-wide text-gray-800 transition-colors duration-200 hover:text-red-400;
+}
