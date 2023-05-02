@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.custom-container {
+    @apply mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl
+}
+
 .active {
     @apply font-medium tracking-wide text-red-600 transition-colors duration-200 hover:text-red-400;
 }

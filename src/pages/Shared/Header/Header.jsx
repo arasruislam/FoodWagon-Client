@@ -2,11 +2,16 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaHamburger } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
-import avatar from "../../../../public/avatar.png"
+import avatar from "../../../../public/avatar.png";
+import Spinner from "../Spinner/Spinner";
 
 const Header = () => {
-  const { user, loggedOut } = useContext(AuthContext);
+  const { user, loggedOut, loading } = useContext(AuthContext);
 
+  // if (loading) {
+  //   return <Spinner />;
+  // }
+  
   /* Logged Out User */
   const loggedOutUser = () => {
     loggedOut()
@@ -103,7 +108,7 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <Link to='/login'>
+                    <Link to="/login">
                       <img src={avatar} title="login" />
                     </Link>
                   </>

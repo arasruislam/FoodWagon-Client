@@ -4,6 +4,8 @@ This is a chef recipe hunting website. Here you can find your favorite chef and 
 
 __Live Link__ [Watch]
 
+## Project Steps
+
 ## Important Resources
 
 ### All Used Frameworks in this project
@@ -18,4 +20,5 @@ __Live Link__ [Watch]
 
 ### Additional File
 
-*LottieFile => [Go Now](https://lottiefiles.com/)
+*LottieFile => __[Go Now](https://lottiefiles.com/)__
+*tailwind element => __[Go Now](https://tailwind-elements.com/docs/)__

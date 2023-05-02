@@ -3,6 +3,7 @@ import Lottie from "lottie-react";
 import signUpAnimation from "../../../../public/singup.json";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Registration = () => {
   const [error, setError] = useState("");
@@ -13,34 +14,32 @@ const Registration = () => {
   const handleRegistration = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    // const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const photoURL = form.photoURL.value;
+    // const photoURL = form.photoURL.value;
 
     /* Password Validation */
     if (password.length < 8) {
       setError("Password must be at least 8 character");
       return;
-    }
-    if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+    } else if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
       setError("Please provide at least two uppercase");
       return;
-    }
-    if (!/(?=.*[!@#$&*])/.test(password)) {
+    } else if (!/(?=.*[!@#$&*])/.test(password)) {
       setError("Please add at least one special character");
       return;
+    } else {
+      registerUser(email, password)
+        .then((result) => {
+          const registerUser = result.user;
+          console.log(registerUser);
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
     }
-
-    registerUser(email, password)
-      .then((result) => {
-        const registerUser = result.user;
-        console.log(registerUser);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
   };
 
   return (
@@ -68,6 +67,7 @@ const Registration = () => {
                   <span className="label-text">Your Name</span>
                 </label>
                 <input
+                  onChange={(e) => setName(e.target.value)}
                   type="text"
                   placeholder="Enter Name"
                   name="name"
@@ -104,6 +104,7 @@ const Registration = () => {
                   <span className="label-text">Your PhotoUrl</span>
                 </label>
                 <input
+                  onChange={(e) => setPhotoURL(e.target.value)}
                   type="file"
                   placeholder="photoURL"
                   name="photoURL"

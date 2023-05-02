@@ -2,9 +2,10 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import Home from "../pages/Home/Home/Home";
-import Blog from "./../pages/Home/Blog/Blog";
+
 import Login from "../pages/Account/Login/Login";
 import Registration from "../pages/Account/Registration/Registration";
+import Blog from "../pages/Blog/Blog";
 
 const Routes = createBrowserRouter([
   {
