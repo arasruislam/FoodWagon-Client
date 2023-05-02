@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
 import signUpAnimation from "../../../../public/singup.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Registration = () => {
-  const { user } = useContext(AuthContext);
-
-  
+  const [error, setError] = useState("");
+  const { registerUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   /* Registration Handler */
   const handleRegistration = (e) => {
@@ -16,9 +16,31 @@ const Registration = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const photoUrl = form.photoUrl.value;
+    const photoURL = form.photoURL.value;
 
-    console.log(name, email, password, photoUrl);
+    /* Password Validation */
+    if (password.length < 8) {
+      setError("Password must be at least 8 character");
+      return;
+    }
+    if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+      setError("Please provide at least two uppercase");
+      return;
+    }
+    if (!/(?=.*[!@#$&*])/.test(password)) {
+      setError("Please add at least one special character");
+      return;
+    }
+
+    registerUser(email, password)
+      .then((result) => {
+        const registerUser = result.user;
+        console.log(registerUser);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (
@@ -36,6 +58,11 @@ const Registration = () => {
           {/* Login Form */}
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleRegistration} className="card-body">
+              {/* Error Message */}
+              <div>
+                <p className="text-red-500">{error}</p>
+              </div>
+              {/* Error Message */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Your Name</span>
@@ -77,11 +104,12 @@ const Registration = () => {
                   <span className="label-text">Your PhotoUrl</span>
                 </label>
                 <input
-                  type="text"
-                  placeholder="photoUrl"
-                  name="photoUrl"
-                  className="input input-bordered"
+                  type="file"
+                  placeholder="photoURL"
+                  name="photoURL"
+                  className="input input-bordered pt-2"
                   required
+                  accept=".gif,.jpg,.jpeg,.png,.doc,.docx"
                 />
               </div>
               <div className="form-control mt-6">

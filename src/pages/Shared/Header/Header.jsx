@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaHamburger } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
+import avatar from "../../../../public/avatar.png"
 
 const Header = () => {
   const { user, loggedOut } = useContext(AuthContext);
@@ -96,7 +97,17 @@ const Header = () => {
           <div className="navbar-end">
             <div className="avatar">
               <div className="w-8 cursor-pointer rounded-full">
-                <img src={user?.photoURL} />
+                {user ? (
+                  <>
+                    <img src={user?.photoURL} title={user?.displayName} />
+                  </>
+                ) : (
+                  <>
+                    <Link to='/login'>
+                      <img src={avatar} title="login" />
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
             <div>
