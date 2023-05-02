@@ -31,18 +31,18 @@ const Routes = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "chef",
-    element: <ChefDetailsLayout />,
-    children: [
-      {
-        path: ":id",
-        element: <Chef />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/chef/${params.id}`),
-      },
-    ],
-  },
+  // {
+  //   path: "chef",
+  //   element: <ChefDetailsLayout />,
+  //   children: [
+  //     {
+  //       path: ":id",
+  //       element: <Chef />,
+  //       loader: ({ params }) =>
+  //         fetch(`http://localhost:5000/chef/${params.id}`),
+  //     },
+  //   ],
+  // },
 ]);
 
 export default Routes;

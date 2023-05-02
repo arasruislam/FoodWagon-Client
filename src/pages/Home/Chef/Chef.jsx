@@ -1,24 +1,37 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import Banner from "../../Shared/Banner/Banner";
+import React, { useEffect, useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
+import ChefCard from "./ChefCard";
 
 const Chef = () => {
-  const { id } = useParams();
-  console.log(id);
+  const [chefDetails, setChefDetails] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/chef")
+      .then((res) => res.json())
+      .then((data) => setChefDetails(data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  console.log(chefDetails);
+
   return (
     <div>
       {/* Chef Details */}
-      <section>
-        <div className="text-center max-w-lg mx-auto">
-          <h2 className="font-bold capitalize text-4xl text-center   pb-2">
-            Our Chefs
-          </h2>
-          <p className="text-gray-500">
-            A professional cook and tradesman who is proficient in all aspects
-            of food preparation.
-          </p>
-        </div>
-      </section>
+      <div className="text-center max-w-lg mx-auto">
+        <h2 className="font-bold capitalize text-4xl text-center   pb-2">
+          Our Chefs
+        </h2>
+        <p className="text-gray-500">
+          A professional cook and tradesman who is proficient in all aspects of
+          food preparation.
+        </p>
+      </div>
+
+      {/* Single Chef Detail */}
+      <div>
+        {chefDetails.map((singleChefData) => (
+          <ChefCard key={singleChefData.id} singleChefData={singleChefData} />
+        ))}
+      </div>
     </div>
   );
 };
