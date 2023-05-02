@@ -8,10 +8,14 @@ __Live Link__ [Watch]
 
 ### All Used Frameworks in this project
 
-* TailwindCss => __[Go Now](https://tailwindcss.com/docs/)
-* DaisyUi => __[Go Now](https://daisyui.com/components/)
+* TailwindCss => __[Go Now](https://tailwindcss.com/docs/)__
+* DaisyUi => __[Go Now](https://daisyui.com/components/)__
 
 ### Icons Collects From
 
 * React Icons => __[Go Now](https://react-icons.github.io/react-icons)__
 * FlatIcon => __[Go Now](https://www.flaticon.com/)__
+
+### Additional File
+
+*LottieFile => [Go Now](https://lottiefiles.com/)

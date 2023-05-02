@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Lottie from "lottie-react";
 import signUpAnimation from "../../../../public/singup.json";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Registration = () => {
+  const { user } = useContext(AuthContext);
 
-    /* Registration Handler */
+  
+
+  /* Registration Handler */
   const handleRegistration = (e) => {
     e.preventDefault();
     const form = e.target;
