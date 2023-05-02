@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Lottie from "lottie-react";
 import loginAnimation from "../../../../public/login.json";
 import { Link } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Login = () => {
+  const {singInWithGoogle, singInWithGithub } = useContext(AuthContext);
   /* Login handler */
   const handleLogin = (e) => {
     e.preventDefault();
@@ -13,6 +15,18 @@ const Login = () => {
     const password = form.password.value;
 
     console.log(email, password);
+  };
+
+  /* Login function */
+  const googleLogIn = () => {
+    singInWithGoogle()
+      .then((result) => result.user)
+      .catch((error) => console.log(error.message));
+  };
+  const githubLogIn = () => {
+    singInWithGithub()
+      .then((result) => result.user)
+      .catch((error) => console.log(error.message));
   };
 
   return (
@@ -71,10 +85,10 @@ const Login = () => {
 
             <div className="mx-8 my-4">
               <h5 className="font-bold">Or Login with</h5>
-              <button className="btn w-full mb-2">
+              <button onClick={githubLogIn} className="btn w-full mb-2">
                 <FaGithub className="h-6 w-6 mr-4" /> Log in with GitHub
               </button>
-              <button className="btn btn-info w-full">
+              <button onClick={googleLogIn} className="btn btn-info w-full">
                 <FaGoogle className="h-6 w-6 mr-4" />
                 Log in with Google
               </button>

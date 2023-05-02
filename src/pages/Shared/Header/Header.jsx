@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaHamburger } from "react-icons/fa";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Header = () => {
+  const { user, loggedOut } = useContext(AuthContext);
+
+  /* Logged Out User */
+  const loggedOutUser = () => {
+    loggedOut()
+      .then()
+      .catch((error) => console.log(error.message));
+  };
+
   return (
-    <div className="absolute top-0 right-0 left-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+    <div className="fixed z-10 top-0 right-0 left-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
       <div className=" bg-white rounded-xl shadow-md overflow-hidden">
         <div className="navbar bg-base-100">
           <div className="navbar-start">
@@ -86,16 +96,35 @@ const Header = () => {
           <div className="navbar-end">
             <div className="avatar">
               <div className="w-8 cursor-pointer rounded-full">
-                <img src="https://scontent.fdac24-3.fna.fbcdn.net/v/t39.30808-6/343475428_212501841499140_2036591800294696956_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeGR4Gm9JRv7qVtPzR99UCqpeuCActmwe7564IBy2bB7vsM5STeCrELUR5WrR8-HufdPju7UcUndmUBGyGt4u-ww&_nc_ohc=e2K1qhOY3bUAX-jXdG6&_nc_ht=scontent.fdac24-3.fna&oh=00_AfCVFCcn1lH_36wTi7767L4yhUTeYaTrtuXgFCCbUBc3Ig&oe=64554E5D" />
+                <img src={user?.photoURL} />
               </div>
             </div>
             <div>
               <ul className="ml-2 menu-horizontal px-1">
-                <li>
-                  <NavLink to="/login">
-                    <button className="btn btn-sm text-gray-800 btn-warning font-bold">Login</button>
-                  </NavLink>
-                </li>
+                {user ? (
+                  <>
+                    <li>
+                      <NavLink to="/">
+                        <button
+                          onClick={loggedOutUser}
+                          className="btn btn-sm text-gray-800 btn-warning font-bold"
+                        >
+                          Logout
+                        </button>
+                      </NavLink>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <NavLink to="/login">
+                        <button className="btn btn-sm text-gray-800 btn-warning font-bold">
+                          Login
+                        </button>
+                      </NavLink>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>
