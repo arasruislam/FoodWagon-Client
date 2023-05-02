@@ -6,7 +6,8 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Login = () => {
-  const {singInWithGoogle, singInWithGithub } = useContext(AuthContext);
+  const { loggedInUser, singInWithGoogle, singInWithGithub } =
+    useContext(AuthContext);
   /* Login handler */
   const handleLogin = (e) => {
     e.preventDefault();
@@ -14,7 +15,14 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
+    loggedInUser(email, password)
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   /* Login function */
