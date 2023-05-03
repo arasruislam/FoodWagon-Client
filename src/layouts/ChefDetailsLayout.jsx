@@ -3,6 +3,7 @@ import Header from "../pages/Shared/Header/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "../pages/Shared/Footer/Footer";
 import Banner from "../pages/Shared/Banner/Banner";
+import ChefCard from "../pages/Home/Chef/ChefCard";
 
 const ChefDetailsLayout = () => {
   return (
