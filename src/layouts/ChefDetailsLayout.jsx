@@ -9,11 +9,6 @@ const ChefDetailsLayout = () => {
     <>
       <Header />
       <div className="mt-16 min-h-[calc(100vh-256px)]">
-        {/* Banner Section */}
-        <section className="pt-4">
-          <Banner />
-        </section>
-        
         <Outlet />
       </div>
       <Footer />

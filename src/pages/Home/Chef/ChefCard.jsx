@@ -1,6 +1,7 @@
 import React from "react";
 import chefBgImage from "../../../../public/chefBgImage.png";
 import { FaAngleRight, FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ChefCard = ({ singleChefData }) => {
   const { chefName, chefPhotoUrl, likes, numRecipes, yearsExperience } =
@@ -26,9 +27,11 @@ const ChefCard = ({ singleChefData }) => {
           <button className="btn btn-sm bg-orange-500 border-0 hover:bg-orange-600 transition-all duration-300">
             <FaHeart className="mr-1" /> {likes}
           </button>
-          <button className="btn btn-sm capitalize">
-            View Recipe <FaAngleRight />
-          </button>
+          <Link to={`/chef/${singleChefData.id}`}>
+            <button className="btn btn-sm capitalize">
+              View Recipe <FaAngleRight />
+            </button>
+          </Link>
         </div>
       </div>
     </div>
