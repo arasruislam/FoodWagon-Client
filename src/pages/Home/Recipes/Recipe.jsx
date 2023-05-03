@@ -45,11 +45,11 @@ const Recipe = ({ recipe }) => {
 
       {/* Recipe List */}
       <div className="my-4">
-        <h4 className="text-4xl font-bold border-b-2 border-gray-400 pb-4">
+        <h4 className="text-4xl mx-4 lg:mx-0 font-bold border-b-2 border-gray-400 pb-4">
           Recipe
         </h4>
 
-        <div>
+        <div className="grid gird-col justify-center items-center gap-4 mt-8">
           {recipes.map((RecipeItem, index) => (
             <RecipeItemCard key={index} RecipeItem={RecipeItem} />
           ))}
