@@ -7,11 +7,14 @@ import Registration from "../pages/Account/Registration/Registration";
 import Blog from "../pages/Blog/Blog";
 import ChefDetailsLayout from "./../layouts/ChefDetailsLayout";
 import Recipes from "../pages/Home/Recipes/Recipes";
+import ErrorPage from "../pages/Error/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -34,10 +37,15 @@ const Routes = createBrowserRouter([
   {
     path: "chef",
     element: <ChefDetailsLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: ":id",
-        element: <Recipes />,
+        element: (
+          <PrivateRoute>
+            <Recipes />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/recipes/${params.id}`),
       },
