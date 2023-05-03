@@ -16,7 +16,7 @@ const Chef = () => {
   return (
     <div>
       {/* Chef Details */}
-      <div className="text-center max-w-lg mx-auto">
+      <div className="text-center max-w-lg mx-auto mb-8">
         <h2 className="font-bold capitalize text-4xl text-center   pb-2">
           Our Chefs
         </h2>
@@ -27,7 +27,7 @@ const Chef = () => {
       </div>
 
       {/* Single Chef Detail */}
-      <div>
+      <div className="grid grid-col md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-4">
         {chefDetails.map((singleChefData) => (
           <ChefCard key={singleChefData.id} singleChefData={singleChefData} />
         ))}
