@@ -1,12 +1,62 @@
-import React from 'react';
+import React from "react";
+import chefBgImage from "../../../../public/chefBgImage.png";
+import { FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import RecipeItemCard from "./RecipeItemCard";
 
 const Recipe = ({ recipe }) => {
-    
-    return (
-        <div>
-            
+  const {
+    chefName,
+    chefPhotoUrl,
+    likes,
+    numRecipes,
+    yearsExperience,
+    chefDescription,
+    recipes,
+  } = recipe;
+  return (
+    <section>
+      <div className="hero min-h-screen">
+        <div className="hero-content flex-col lg:flex-row">
+          <img
+            src={chefPhotoUrl}
+            style={{
+              backgroundImage: `url(${chefBgImage})`,
+            }}
+            className="max-w-sm hero rounded-lg shadow-2xl"
+          />
+          <div className="lg:border-l-4 border-orange-500 ps-4">
+            <h1 className="text-5xl font-bold">{chefName}</h1>
+            <p className="py-6">{chefDescription}</p>
+            <h4 className="text-lg font-bold">
+              Total Recipe:{" "}
+              <span className="text-orange-500">{numRecipes}</span>
+            </h4>
+            <h4 className="text-lg font-bold">
+              Cocking Experience:{" "}
+              <span className="text-orange-500">{yearsExperience}</span>
+            </h4>
+            <button className="btn btn-sm bg-orange-500 border-0 hover:bg-orange-600 transition-all duration-300 mt-4">
+              <FaHeart className="mr-1" /> {likes}
+            </button>
+          </div>
         </div>
-    );
+      </div>
+
+      {/* Recipe List */}
+      <div className="my-4">
+        <h4 className="text-4xl font-bold border-b-2 border-gray-400 pb-4">
+          Recipe
+        </h4>
+
+        <div>
+          {recipes.map((RecipeItem, index) => (
+            <RecipeItemCard key={index} RecipeItem={RecipeItem} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Recipe;

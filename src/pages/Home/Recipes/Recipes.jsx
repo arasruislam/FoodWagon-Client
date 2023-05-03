@@ -4,25 +4,23 @@ import Recipe from "./Recipe";
 import Breadcrumb from "../../Shared/Breadcrumb/Breadcrumb";
 
 const Recipes = () => {
-    const { id } = useParams();
-    const recipes = useLoaderData();
-    return (
+  const { id } = useParams();
+  const recipes = useLoaderData();
+  return (
+    <div>
+      {/* breadcrumb */}
       <div>
-        {/* breadcrumb */}
-        <div>
-          <Breadcrumb />
-        </div>
-
-        {/*  Recipes */ }
-        <div className="custom-container mt-8">
-          {recipes.map((recipe) => (
-            <Recipe key={recipe.id} recipe={recipe} />
-          ))}
-        </div>
+        <Breadcrumb />
       </div>
-    );
+
+      {/*  Recipes */}
+      <div className="custom-container">
+        {recipes.map((recipe) => (
+          <Recipe key={recipe.id} recipe={recipe} />
+        ))}
+          </div>
+    </div>
+  );
 };
 
 export default Recipes;
-
-
