@@ -1,6 +1,7 @@
 import React from "react";
 import Chef from "../Chef/Chef";
 import Banner from "../../Shared/Banner/Banner";
+import Advertisement from "../../Shared/Banner/Advertisement";
 
 const Home = () => {
   return (
@@ -13,6 +14,11 @@ const Home = () => {
       {/* Chef Section */}
       <section className="custom-container my-8">
         <Chef />
+      </section>
+
+      {/* Ads Section */}
+      <section className="pt-12">
+        <Advertisement />
       </section>
     </div>
   );

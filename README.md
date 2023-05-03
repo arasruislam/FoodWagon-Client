@@ -28,3 +28,4 @@ __Live Link__ [Watch]
 *Tailwind element => __[Go Now](https://tailwind-elements.com/docs/)__
 *Image Link Generate From __Imgbb__
 *Json data made by using __ChapGPT__
+*React-Hot-Toast => __[Go Now](https://github.com/timolins/react-hot-toast)__

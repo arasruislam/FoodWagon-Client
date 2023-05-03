@@ -48,16 +48,14 @@ const RecipeItemCard = ({ RecipeItem }) => {
             </p>
           </div>
           <div className="flex items-center my-auto space-x-2">
-            
-              <button
-                disabled={favorite}
-                onClick={handleFavoriteButton}
-                className="btn btn-outline btn-warning"
-              >
-                <FcLike className=" cursor-pointer" />
-                Favorite
-              </button>
-            
+            <button
+              disabled={favorite}
+              onClick={handleFavoriteButton}
+              className="btn btn-outline btn-warning"
+            >
+              <FcLike className=" cursor-pointer" />
+              Favorite
+            </button>
             <button className="btn btn-outline btn-warning">Order Now</button>
           </div>
         </div>
