@@ -6,12 +6,8 @@ import avatar from "../../../../public/avatar.png";
 import Spinner from "../Spinner/Spinner";
 
 const Header = () => {
-  const { user, loggedOut, loading } = useContext(AuthContext);
+  const { user, loggedOut } = useContext(AuthContext);
 
-  // if (loading) {
-  //   return <Spinner />;
-  // }
-  
   /* Logged Out User */
   const loggedOutUser = () => {
     loggedOut()
@@ -65,6 +61,16 @@ const Header = () => {
                     Blog
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "default"
+                    }
+                  >
+                    About
+                  </NavLink>
+                </li>
               </ul>
             </div>
             <Link
@@ -95,6 +101,16 @@ const Header = () => {
                   }
                 >
                   Blog
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    isActive ? "active" : "default"
+                  }
+                >
+                  About
                 </NavLink>
               </li>
             </ul>

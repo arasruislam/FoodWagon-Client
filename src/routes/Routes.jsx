@@ -10,6 +10,7 @@ import Recipes from "../pages/Home/Recipes/Recipes";
 import ErrorPage from "../pages/Error/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import Chef from "../pages/Home/Chef/Chef";
+import About from "../pages/About/About";
 
 const Routes = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const Routes = createBrowserRouter([
         path: "/registration",
         element: <Registration />,
       },
+      {
+        path: "/about",
+        element: <About />,
+      },
     ],
   },
   {
@@ -42,7 +47,11 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "/chef",
-        element: <Chef />,
+        element: (
+          <PrivateRoute>
+            <Chef />
+          </PrivateRoute>
+        ),
       },
       {
         path: ":id",

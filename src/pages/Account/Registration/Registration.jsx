@@ -1,13 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import signUpAnimation from "../../../../public/singup.json";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import app from "../../../firebase/firebase.config";
+
+const auth = getAuth(app);
 
 const Registration = () => {
-  const [error, setError] = useState("");
   const { registerUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  /* Store Name, Photo Url & error message */
+  const [error, setError] = useState("");
+  const [name, setName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
 
   /* Registration Handler */
   const handleRegistration = (e) => {
@@ -22,8 +31,8 @@ const Registration = () => {
     if (password.length < 8) {
       setError("Password must be at least 8 character");
       return;
-    } else if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
-      setError("Please provide at least two uppercase");
+    } else if (!/(?=.*[A-Z])/.test(password)) {
+      setError("Please provide at least one uppercase");
       return;
     } else if (!/(?=.*[!@#$&*])/.test(password)) {
       setError("Please add at least one special character");
@@ -38,7 +47,19 @@ const Registration = () => {
       .catch((error) => {
         console.log(error.message);
       });
+
+    // Update profile
+    updateProfile(auth.currentUser, {
+      displayName: "",
+      photoURL: "",
+    }).then((result) => {
+      result.displayName = name;
+      result.photoURL = photoURL;
+    });
+    
   };
+
+  
 
   return (
     <div>
@@ -103,10 +124,10 @@ const Registration = () => {
                 </label>
                 <input
                   onChange={(e) => setPhotoURL(e.target.value)}
-                  type="file"
+                  type="url"
                   placeholder="photoURL"
                   name="photoURL"
-                  className="input input-bordered pt-2"
+                  className="input input-bordered"
                   required
                   accept=".gif,.jpg,.jpeg,.png,.doc,.docx"
                 />
