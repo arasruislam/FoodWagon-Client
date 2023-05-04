@@ -3,7 +3,6 @@ import Lottie from "lottie-react";
 import signUpAnimation from "../../../../public/singup.json";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { updateProfile } from "firebase/auth";
 
 const Registration = () => {
   const [error, setError] = useState("");
@@ -29,17 +28,16 @@ const Registration = () => {
     } else if (!/(?=.*[!@#$&*])/.test(password)) {
       setError("Please add at least one special character");
       return;
-    } else {
-      registerUser(email, password)
-        .then((result) => {
-          const registerUser = result.user;
-          console.log(registerUser);
-          navigate("/");
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
     }
+
+    registerUser(email, password)
+      .then((result) => {
+        const registerUser = result.user;
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   return (

@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
 import Lottie from "lottie-react";
 import loginAnimation from "../../../../public/login.json";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Login = () => {
   const { loggedInUser, singInWithGoogle, singInWithGithub } =
     useContext(AuthContext);
+  
+  // Redirect location
+  const location = useLocation();
+  const navigate = useNavigate();
+  const userFrom = location.state?.from?.pathname || "/";
+
   /* Login handler */
   const handleLogin = (e) => {
     e.preventDefault();
@@ -18,7 +24,8 @@ const Login = () => {
     loggedInUser(email, password)
       .then((result) => {
         const loggedInUser = result.user;
-        console.log(loggedInUser);
+    
+        navigate(userFrom, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -28,12 +35,18 @@ const Login = () => {
   /* Login function */
   const googleLogIn = () => {
     singInWithGoogle()
-      .then((result) => result.user)
+      .then((result) => {
+        result.user;
+        navigate(userFrom, { replace: true });
+      })
       .catch((error) => console.log(error.message));
   };
   const githubLogIn = () => {
     singInWithGithub()
-      .then((result) => result.user)
+      .then((result) => {
+        result.user;
+        navigate(userFrom, { replace: true });
+      })
       .catch((error) => console.log(error.message));
   };
 

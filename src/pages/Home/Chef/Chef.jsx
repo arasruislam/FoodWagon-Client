@@ -11,8 +11,6 @@ const Chef = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log(chefDetails);
-
   return (
     <div>
       {/* Chef Details */}
