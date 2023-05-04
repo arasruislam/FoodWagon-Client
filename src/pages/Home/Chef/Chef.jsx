@@ -11,7 +11,7 @@ const Chef = () => {
   }, []);
 
   return (
-    <div>
+    <div className="my-8">
       {/* Chef Details */}
       <div className="text-center max-w-lg mx-auto mb-8">
         <h2 className="font-bold capitalize text-4xl text-center   pb-2">

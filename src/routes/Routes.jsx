@@ -11,6 +11,7 @@ import ErrorPage from "../pages/Error/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import Chef from "../pages/Home/Chef/Chef";
 import About from "../pages/About/About";
+import UserProfile from "../pages/UserProfile/UserProfile";
 
 const Routes = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ const Routes = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/user",
+        element: (
+          <PrivateRoute>
+            <UserProfile />
+          </PrivateRoute>
+        ),
       },
     ],
   },

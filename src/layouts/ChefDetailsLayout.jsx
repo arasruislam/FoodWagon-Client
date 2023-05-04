@@ -6,7 +6,7 @@ import Banner from "../pages/Shared/Banner/Banner";
 import ChefCard from "../pages/Home/Chef/ChefCard";
 import { Toaster } from "react-hot-toast";
 import Breadcrumb from "../pages/Shared/Breadcrumb/Breadcrumb";
-
+import Advertisement from "../pages/Shared/Banner/Advertisement";
 
 const ChefDetailsLayout = () => {
   return (
@@ -15,6 +15,7 @@ const ChefDetailsLayout = () => {
       <div className="mt-16 min-h-[calc(100vh-256px)]">
         <Breadcrumb />
         <Outlet />
+        <Advertisement />
         <Toaster />
       </div>
       <Footer />

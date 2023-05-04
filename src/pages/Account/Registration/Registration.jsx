@@ -42,6 +42,10 @@ const Registration = () => {
     registerUser(email, password)
       .then((result) => {
         const registerUser = result.user;
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photoURL,
+        }).then((result) => {});
         navigate("/");
       })
       .catch((error) => {
@@ -49,13 +53,7 @@ const Registration = () => {
       });
 
     // Update profile
-    updateProfile(auth.currentUser, {
-      displayName: "",
-      photoURL: "",
-    }).then((result) => {
-      result.displayName = name;
-      result.photoURL = photoURL;
-    });
+    
     
   };
 

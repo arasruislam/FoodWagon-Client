@@ -1,18 +1,24 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
 import { FaHamburger } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
 import avatar from "../../../../public/avatar.png";
-import Spinner from "../Spinner/Spinner";
 
 const Header = () => {
   const { user, loggedOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   /* Logged Out User */
   const loggedOutUser = () => {
     loggedOut()
       .then()
       .catch((error) => console.log(error.message));
+  };
+
+  const userProfile = (user) => {
+    if (user) {
+      return navigate("/user");
+    }
   };
 
   return (
@@ -140,7 +146,11 @@ const Header = () => {
               <div className="w-8 cursor-pointer rounded-full">
                 {user ? (
                   <>
-                    <img src={user?.photoURL} title={user?.displayName} />
+                    <img
+                      onClick={userProfile}
+                      src={user?.photoURL}
+                      title={user?.displayName}
+                    />
                   </>
                 ) : (
                   <>

@@ -1,9 +1,12 @@
 import React from "react";
 import { FaRegCheckSquare } from "react-icons/fa";
 import Lottie from "lottie-react";
-import qna from "../../../public/QNA.json"
+import qna from "../../../public/QNA.json";
 import Breadcrumb from "../Shared/Breadcrumb/Breadcrumb";
 import LazyLoad from "react-lazy-load";
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
 
 const Blog = () => {
   return (
@@ -14,7 +17,10 @@ const Blog = () => {
       </section>
 
       {/* QNA */}
-      <div className="custom-container lg:mt-16 py-8 grid grid-col md:grid-cols-2 items-center ">
+      <div
+        ref={ref}
+        className="custom-container lg:mt-16 py-8 grid grid-col md:grid-cols-2 items-center "
+      >
         <div className="space-y-2">
           <div className="bg-orange-100 overflow-hidden rounded">
             <h1 className="text-2xl flex items-center gap-4 bg-blue-100 shadow px-4 py-2">
@@ -75,6 +81,17 @@ const Blog = () => {
             <Lottie animationData={qna} loop={true} />
           </LazyLoad>
         </div>
+      </div>
+
+      {/* React to Pdf Button */}
+      <div className="custom-container mb-4">
+        <Pdf targetRef={ref} filename="blog-page.pdf">
+          {({ toPdf }) => (
+            <button className="btn btn-primary " onClick={toPdf}>
+              Download Pdf
+            </button>
+          )}
+        </Pdf>
       </div>
     </div>
   );
