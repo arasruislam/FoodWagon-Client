@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Rating, RoundedStar } from "@smastrom/react-rating";
 import { FcLike } from "react-icons/fc";
+import LazyLoad from "react-lazy-load";
 
 // CSS
 import "@smastrom/react-rating/style.css";
@@ -25,7 +26,9 @@ const RecipeItemCard = ({ RecipeItem }) => {
     <div className="max-w-xl md:max-w-full mx-auto relative rounded-lg shadow-lg shadow-orange-300 overflow-hidden">
       <div className="flex flex-row">
         <div className=" w-5/12">
-          <img src={recipeImages} alt="Recipe Image" />
+          <LazyLoad>
+            <img src={recipeImages} alt="Recipe Image" />
+          </LazyLoad>
         </div>
         <div className="w-7/12 md:border-l-4 border-orange-500 p-4 flex flex-col">
           <h1 className="text-3xl font-bold text-orange-600 mb-8">{name}</h1>

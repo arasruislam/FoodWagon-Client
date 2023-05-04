@@ -1,8 +1,8 @@
 import React from "react";
 import chefBgImage from "../../../../public/chefBgImage.png";
-import { FaHeart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaThumbsUp } from "react-icons/fa";
 import RecipeItemCard from "./RecipeItemCard";
+import LazyLoad from "react-lazy-load";
 
 const Recipe = ({ recipe }) => {
   const {
@@ -18,13 +18,17 @@ const Recipe = ({ recipe }) => {
     <section>
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row">
-          <img
-            src={chefPhotoUrl}
-            style={{
-              backgroundImage: `url(${chefBgImage})`,
-            }}
-            className="max-w-sm hero rounded-lg shadow-2xl"
-          />
+          {/* Use Lazy Load */}
+          <LazyLoad>
+            <img
+              src={chefPhotoUrl}
+              style={{
+                backgroundImage: `url(${chefBgImage})`,
+              }}
+              className="max-w-sm hero w-80 rounded-lg shadow-2xl"
+            />
+          </LazyLoad>
+
           <div className="lg:border-l-4 border-orange-500 ps-4">
             <h1 className="text-5xl font-bold">{chefName}</h1>
             <p className="py-6">{chefDescription}</p>
@@ -37,7 +41,7 @@ const Recipe = ({ recipe }) => {
               <span className="text-orange-500">{yearsExperience}</span>
             </h4>
             <button className="btn btn-sm bg-orange-500 border-0 hover:bg-orange-600 transition-all duration-300 mt-4">
-              <FaHeart className="mr-1" /> {likes}
+              <FaThumbsUp className="mr-1" /> {likes}
             </button>
           </div>
         </div>
