@@ -10,7 +10,7 @@ import { FaArrowAltCircleRight, FaArrowsAlt } from 'react-icons/fa';
 
 const FoodItem = () => {
     return (
-      <div className="custom-container">
+      <div className="custom-container p-2 lg:p-0">
         <div className="flex justify-between items-center">
           <h2 className="text-3xl font-bold py-4">Food Item Collection</h2>
           <div>
@@ -23,7 +23,7 @@ const FoodItem = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 lg:grid-cols-6 gap-8 py-8">
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 py-8">
           <div className="text-center">
             <img
               src={img_1}
