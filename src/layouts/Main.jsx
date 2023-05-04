@@ -7,11 +7,14 @@ import Spinner from "../pages/Shared/Spinner/Spinner";
 import Banner from "../pages/Shared/Banner/Banner";
 
 const Main = () => {
-  const { loading } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
 
-  if (loading) {
-    return <Spinner />;
+  if (user) {
+    if (loading) {
+      return <Spinner />;
+    }
   }
+
   return (
     <>
       <Header />
