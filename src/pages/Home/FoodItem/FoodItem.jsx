@@ -23,6 +23,7 @@ const FoodItem = () => {
           </div>
         </div>
 
+        {/* Food Images */}
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 py-8">
           <div className="text-center">
             <img

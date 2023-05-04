@@ -4,7 +4,6 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const Breadcrumb = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <div>
       <div

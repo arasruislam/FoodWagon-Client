@@ -42,6 +42,8 @@ const Registration = () => {
     registerUser(email, password)
       .then((result) => {
         const registerUser = result.user;
+
+        /* Update profile */
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photoURL,
@@ -51,13 +53,7 @@ const Registration = () => {
       .catch((error) => {
         console.log(error.message);
       });
-
-    // Update profile
-    
-    
   };
-
-  
 
   return (
     <div>
@@ -71,7 +67,7 @@ const Registration = () => {
             <Lottie animationData={signUpAnimation} loop={true} />
           </div>
 
-          {/* Login Form */}
+          {/* Registration Form */}
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleRegistration} className="card-body">
               {/* Error Message */}

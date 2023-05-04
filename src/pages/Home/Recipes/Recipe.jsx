@@ -14,6 +14,7 @@ const Recipe = ({ recipe }) => {
     chefDescription,
     recipes,
   } = recipe;
+  
   return (
     <section>
       <div className="hero min-h-screen">

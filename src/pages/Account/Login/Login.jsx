@@ -104,6 +104,7 @@ const Login = () => {
               </Link>
             </p>
 
+            {/* Login with Google & GitHub */}
             <div className="mx-8 my-4">
               <h5 className="font-bold">Or Login with</h5>
               <button onClick={githubLogIn} className="btn w-full mb-2">

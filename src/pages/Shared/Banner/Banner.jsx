@@ -2,8 +2,15 @@ import React from "react";
 import banner from "../../../assets/banner.png";
 import { FaBicycle, FaMapMarkerAlt, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const Banner = () => {
+  const pickup = () => {
+    toast.success('Pickup The Food ✨')
+  }
+  const delivery = () =>{
+    toast.success('Delivered The Food ✌');
+  }
   return (
     <div>
       <div
@@ -21,11 +28,17 @@ const Banner = () => {
 
             <div className="bg-white border rounded-md shadow p-4  divide-y-2">
               <div className="flex items-center gap-4 pb-4">
-                <Link className="btn btn-sm normal-case bg-red-500 text-orange-500 bg-opacity-10 border-0">
+                <Link
+                  onClick={delivery}
+                  className="btn btn-sm normal-case bg-red-500 text-orange-500 bg-opacity-10 border-0"
+                >
                   <FaBicycle className="h-6 w-6 mr-1" />
                   Delivery
                 </Link>
-                <Link className="btn btn-sm normal-case bg-white text-gray-700 border-0 hover:text-white">
+                <Link
+                  onClick={pickup}
+                  className="btn btn-sm normal-case bg-white text-gray-700 border-0 hover:text-white"
+                >
                   <FaUser className="h-4 w-4 mr-1" />
                   Pickup
                 </Link>
