@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
-import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
-import { FaHamburger } from "react-icons/fa";
+import React, { useContext, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import avatar from "../../../../public/avatar.png";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { FaHamburger } from "react-icons/fa";
 
 const Header = () => {
   const { user, loggedOut } = useContext(AuthContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   /* Logged Out User */
@@ -23,80 +25,18 @@ const Header = () => {
 
   return (
     <div className="fixed z-10 top-0 right-0 left-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-      <div className=" bg-white rounded-xl shadow-md overflow-hidden">
-        <div className="navbar bg-base-100">
-          <div className="navbar-start">
-            <div className="dropdown">
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </label>
-              <ul
-                tabIndex={0}
-                className="space-y-4 menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <NavLink
-                    to="/"
-                    className={({ isActive }) =>
-                      isActive ? "active" : "default"
-                    }
-                  >
-                    Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/chef"
-                    className={({ isActive }) =>
-                      isActive ? "active" : "default"
-                    }
-                  >
-                    Chefs
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/blog"
-                    className={({ isActive }) =>
-                      isActive ? "active" : "default"
-                    }
-                  >
-                    Blog
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/about"
-                    className={({ isActive }) =>
-                      isActive ? "active" : "default"
-                    }
-                  >
-                    About
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
+      <div className=" bg-white rounded-xl shadow-md lg:overflow-hidden">
+        <div className="navbar bg-base-100 relative">
+          <div className="navbar-start ">
             <Link
               to="/"
               className="normal-case text-xl font-bold flex items-center"
             >
-              <FaHamburger className="hidden lg:block mr-1 h-6 w-6 text-yellow-500 " />{" "}
-              Food<span className="text-red-400">Wagon</span>
+              <FaHamburger className=" mr-1 h-6 w-6 text-yellow-500 " /> Food
+              <span className="text-red-400">Wagon</span>
             </Link>
           </div>
+          {/* menu items */}
           <div className="navbar-center hidden lg:flex">
             <ul className="space-x-4 menu-horizontal px-1">
               <li>
@@ -141,7 +81,10 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div className="navbar-end">
+
+          {/* user, login, logout */}
+          <div className="navbar-end ">
+            {/* Avatar */}
             <div className="avatar">
               <div className="w-8 cursor-pointer rounded-full">
                 {user ? (
@@ -161,6 +104,7 @@ const Header = () => {
                 )}
               </div>
             </div>
+
             <div>
               <ul className="ml-2 menu-horizontal px-1">
                 {user ? (
@@ -189,6 +133,92 @@ const Header = () => {
                 )}
               </ul>
             </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <div className="lg:hidden ms-auto">
+            <button
+              aria-label="Open Menu"
+              title="open menu"
+              onClick={() => setIsMenuOpen(true)}
+            >
+              <HiMenuAlt3 className="w-6 h-6 text-gray-600" />
+            </button>
+
+            {isMenuOpen && (
+              <div className="absolute top-0 left-0 w-full z-100">
+                <div className="p-5 bg-white border rounded shadow-sm">
+                  <div className="flex items-center justify-between relative">
+                    <div className="navbar-start ">
+                      <Link
+                        to="/"
+                        className="normal-case text-xl font-bold flex items-center"
+                      >
+                        <FaHamburger className="mr-1 h-6 w-6 text-yellow-500 " />{" "}
+                        Food<span className="text-red-400">Wagon</span>
+                      </Link>
+                    </div>
+
+                    {/*Close Button */}
+                    <div>
+                      <button
+                        aria-label="Open Menu"
+                        title="open menu"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <HiX className="w-5 text-gray-600" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Menu Item */}
+                  <div className="navbar-center">
+                    <ul className="space-y-2 menu-horizontal flex flex-col mt-4 ms-auto">
+                      <li>
+                        <NavLink
+                          to="/"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          Home
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/chef"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          Chefs
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/blog"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          Blog
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/about"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          About
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
