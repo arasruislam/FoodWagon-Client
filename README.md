@@ -2,9 +2,8 @@
 
 This is a chef recipe hunting website. Here you can find your favorite chef and their recipes.
 
-__Live Link__ [Watch]
-
-## Project Steps
+__Live Link__ [Watch](https://chef-recipe-hunter-assignment.web.app/)
+__Live Server__ [Watch](https://chef-recipe-hunting-server-assignment-asru-islam.vercel.app/)
 
 ## Important Resources
 

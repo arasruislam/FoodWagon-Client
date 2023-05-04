@@ -1,5 +1,5 @@
 import React from "react";
-import ads from "../../../../public/ads.png";
+import advertisement from "../../../assets/advertisement.png";
 import { FaArrowRight } from "react-icons/fa";
 
 const Advertisement = () => {
@@ -8,7 +8,7 @@ const Advertisement = () => {
       <div
         className="hero min-h-lg"
         style={{
-          backgroundImage: `url(${ads})`,
+          backgroundImage: `url(${advertisement})`,
         }}
       >
         <div className="hero-overlay bg-opacity-10"></div>

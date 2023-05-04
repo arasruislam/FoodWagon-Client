@@ -70,7 +70,9 @@ const Routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/recipes/${params.id}`),
+          fetch(
+            `https://chef-recipe-hunting-server-assignment-asru-islam.vercel.app/recipes/${params.id}`
+          ),
       },
     ],
   },
