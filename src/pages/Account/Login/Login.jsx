@@ -4,11 +4,13 @@ import loginAnimation from "../../../../public/login.json";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useSetTitle from "../../../hook/useSetTitle";
 
 const Login = () => {
   const { loggedInUser, singInWithGoogle, singInWithGithub } =
     useContext(AuthContext);
-  
+  useSetTitle("Login");
+
   // Redirect location
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,7 +26,6 @@ const Login = () => {
     loggedInUser(email, password)
       .then((result) => {
         const loggedInUser = result.user;
-    
         navigate(userFrom, { replace: true });
       })
       .catch((error) => {
@@ -88,6 +89,12 @@ const Login = () => {
                   className="input input-bordered"
                   required
                 />
+                <Link
+                  to="/resetPassword"
+                  className="text-blue-500 mt-1 hover:underline cursor-pointer"
+                >
+                  Forget Password?
+                </Link>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-warning">Login</button>

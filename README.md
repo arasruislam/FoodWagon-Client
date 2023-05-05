@@ -2,7 +2,18 @@
 
 This is a chef recipe hunting website. Here you can find your favorite chef and their recipes.
 
+## Key Point Of This Project
+
+* Use Dynamic Data
+* Dynamic Route
+* Private Route
+* Dynamic Title
+* Firebase Authentication & Deploy
+* Custom Hook
+* Map
+
 __Live Link__ [Watch](https://chef-recipe-hunter-assignment.web.app/)
+
 __Live Server__ [Watch](https://chef-recipe-hunting-server-assignment-asru-islam.vercel.app/)
 
 ## Important Resources
@@ -29,3 +40,5 @@ __Live Server__ [Watch](https://chef-recipe-hunting-server-assignment-asru-islam
 * Json data made by using __ChapGPT__
 * React-Hot-Toast => __[Go Now](https://github.com/timolins/react-hot-toast)__
 * Swipper Js => __[Go Now](https://swiperjs.com/)__
+* React-Leaflet => __[Go Now](https://react-leaflet.js.org/);
+after instal react-leaflet package. must be import__ leaflet/dist/leaflet.css__ its mandatory also must set height, width.

@@ -6,12 +6,14 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { getAuth } from "firebase/auth";
 import app from "../../../firebase/firebase.config";
+import useSetTitle from "../../../hook/useSetTitle";
 
 const auth = getAuth(app);
 
 const Registration = () => {
   const { registerUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  useSetTitle("Registration");
 
   /* Store Name, Photo Url & error message */
   const [error, setError] = useState("");

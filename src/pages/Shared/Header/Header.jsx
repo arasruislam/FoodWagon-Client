@@ -29,7 +29,7 @@ const Header = () => {
         <div className="navbar bg-base-100 relative">
           <div className="navbar-start ">
             <Link
-              to="/"
+              to='/'
               className="normal-case text-xl font-bold flex items-center"
             >
               <FaHamburger className=" mr-1 h-6 w-6 text-yellow-500 " /> Food

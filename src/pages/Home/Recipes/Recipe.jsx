@@ -3,6 +3,7 @@ import chefBgImage from "../../../../public/chefBgImage.png";
 import { FaThumbsUp } from "react-icons/fa";
 import RecipeItemCard from "./RecipeItemCard";
 import LazyLoad from "react-lazy-load";
+import useSetTitle from "../../../hook/useSetTitle";
 
 const Recipe = ({ recipe }) => {
   const {
@@ -14,7 +15,9 @@ const Recipe = ({ recipe }) => {
     chefDescription,
     recipes,
   } = recipe;
-  
+
+  useSetTitle("Recipe");
+
   return (
     <section>
       <div className="hero min-h-screen">

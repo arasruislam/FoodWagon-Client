@@ -24,13 +24,13 @@ const RecipeItemCard = ({ RecipeItem }) => {
 
   return (
     <div className="max-w-xl md:max-w-full mx-auto relative rounded-lg shadow-lg shadow-orange-300 overflow-hidden">
-      <div className="flex flex-row">
-        <div className=" w-5/12">
+      <div className="flex flex-col lg:flex-row">
+        <div className=" lg:w-5/12">
           <LazyLoad>
             <img src={recipeImages} alt="Recipe Image" />
           </LazyLoad>
         </div>
-        <div className="w-7/12 md:border-l-4 border-orange-500 p-4 flex flex-col">
+        <div className="lg:w-7/12 md:border-l-4 border-orange-500 p-4 flex flex-col">
           <h1 className="text-3xl font-bold text-orange-600 mb-8">{name}</h1>
           <div className="space-y-2">
             <p>
@@ -50,13 +50,13 @@ const RecipeItemCard = ({ RecipeItem }) => {
               {rating}
             </p>
           </div>
-          <div className="flex items-center my-auto space-x-2">
+          <div className="flex items-center my-auto pt-4 space-x-2">
             <button
               disabled={favorite}
               onClick={handleFavoriteButton}
               className="btn btn-outline btn-warning"
             >
-              <FcLike className=" cursor-pointer" />
+              <FcLike className="cursor-pointer" />
               Favorite
             </button>
             <button className="btn btn-outline btn-warning">Order Now</button>

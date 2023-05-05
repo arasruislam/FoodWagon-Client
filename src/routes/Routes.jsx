@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import Chef from "../pages/Home/Chef/Chef";
 import About from "../pages/About/About";
 import UserProfile from "../pages/UserProfile/UserProfile";
+import PasswordReset from "../pages/Account/Reset/PasswordReset";
 
 const Routes = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const Routes = createBrowserRouter([
       {
         path: "/registration",
         element: <Registration />,
+      },
+      {
+        path: "/resetPassword",
+        element: <PasswordReset />,
       },
       {
         path: "/about",

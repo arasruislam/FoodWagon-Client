@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import app from "./../firebase/firebase.config";
 
@@ -50,6 +51,11 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  /* Password reset */
+  const passwordReset = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
   /* Current user */
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (loggedUser) => {
@@ -69,6 +75,7 @@ const AuthProvider = ({ children }) => {
     singInWithGithub,
     registerUser,
     loggedInUser,
+    passwordReset,
     loggedOut,
   };
   return (

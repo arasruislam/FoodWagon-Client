@@ -5,10 +5,12 @@ import qna from "../../../public/QNA.json";
 import Breadcrumb from "../Shared/Breadcrumb/Breadcrumb";
 import LazyLoad from "react-lazy-load";
 import Pdf from "react-to-pdf";
+import useSetTitle from "../../hook/useSetTitle";
 
 const ref = React.createRef();
 
 const Blog = () => {
+  useSetTitle("Blog");
   return (
     <div>
       {/* Breadcrumb */}

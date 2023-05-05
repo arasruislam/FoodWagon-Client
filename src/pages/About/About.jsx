@@ -3,8 +3,13 @@ import Breadcrumb from "../Shared/Breadcrumb/Breadcrumb";
 import aboutImg from "../../assets/about.jpg";
 import LazyLoad from "react-lazy-load";
 import Sponsor from "../Shared/Sponor/Sponsor";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import useSetTitle from "../../hook/useSetTitle";
 
 const About = () => {
+  useSetTitle("About");
+
   return (
     <div>
       {/* Breadcrumb */}
@@ -61,7 +66,25 @@ const About = () => {
 
       {/* Sponsor */}
       <section className="mt-20 mb-4">
-        <Sponsor/>
+        <Sponsor />
+      </section>
+
+      {/* Google Map */}
+      <section className="grid place-items-center mt-16 mb-4 ">
+        <MapContainer
+          center={[23.81070617209931, 90.41376758350052]}
+          zoom={13}
+          scrollWheelZoom={false}
+          style={{ height: "80vh", width: "80vw" }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[23.81070617209931, 90.41376758350052]}>
+            <Popup>Dhaka, Bangladesh</Popup>
+          </Marker>
+        </MapContainer>
       </section>
     </div>
   );

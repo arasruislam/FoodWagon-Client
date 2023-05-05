@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ChefCard from "./ChefCard";
+import useSetTitle from "../../../hook/useSetTitle";
 
 const Chef = () => {
   const [chefDetails, setChefDetails] = useState([]);
+  useSetTitle('Chef')
   useEffect(() => {
     fetch(
       "https://chef-recipe-hunting-server-assignment-asru-islam.vercel.app/chef"

@@ -4,8 +4,11 @@ import Banner from "../../Shared/Banner/Banner";
 import Advertisement from "../../Shared/Banner/Advertisement";
 import FoodItem from "../FoodItem/FoodItem";
 import Sponsor from "../../Shared/Sponor/Sponsor";
+import useSetTitle from "../../../hook/useSetTitle";
 
 const Home = () => {
+  useSetTitle('Home');
+
   return (
     <div>
       {/* Banner Section */}
@@ -25,7 +28,9 @@ const Home = () => {
 
       {/* Sponsor */}
       <section className="custom-container my-8 py-16">
-        <h1 className="font-semibold text-3xl mb-4 mx-auto border-b-2 border-orange-400 w-80 text-center pb-4">Our Sponsor</h1>
+        <h1 className="font-semibold text-3xl mb-4 mx-auto border-b-2 border-orange-400 w-80 text-center pb-4">
+          Our Sponsor
+        </h1>
         <Sponsor />
       </section>
 
