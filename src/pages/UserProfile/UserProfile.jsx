@@ -16,7 +16,7 @@ const UserProfile = () => {
   const { user } = useContext(AuthContext);
   useSetTitle(`${user?.displayName}`);
   const [edit, setEdit] = useState("hidden");
-
+  console.log(user);
   /* store input data */
   const [updateName, setUpdateName] = useState("");
   const [updateEmail, setUpdateEmail] = useState("");
@@ -28,7 +28,6 @@ const UserProfile = () => {
 
     updateProfile(auth.currentUser, {
       displayName: updateName,
-      email: updateEmail,
       photoURL: updatePhotoURL,
     })
       .then(() => {
