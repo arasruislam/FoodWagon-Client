@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { RxDotFilled } from "react-icons/rx";
 import { getAuth, updateProfile } from "firebase/auth";
 import app from "../../firebase/firebase.config";
+import { toast } from "react-hot-toast";
+import avatar from "../../../public/avatar.png";
+import moment from "moment";
 
 const auth = getAuth(app);
 
@@ -20,7 +23,6 @@ const UserProfile = () => {
   const [updatePhotoURL, setUpdatePhotoURL] = useState("");
   const [updateBio, setUpdateBio] = useState("");
 
-  console.log(updateName, updateEmail, updatePhotoURL, updateBio);
   const handleUpdateProfileData = (e) => {
     e.preventDefault();
 
@@ -29,7 +31,9 @@ const UserProfile = () => {
       email: updateEmail,
       photoURL: updatePhotoURL,
     })
-      .then(() => {})
+      .then(() => {
+        toast.success("Profile updated✨ Now Click Close Edit");
+      })
       .catch((error) => {
         console.log(error.message);
       });
@@ -50,11 +54,34 @@ const UserProfile = () => {
       <div className="flex flex-col lg:flex-row items-center justify-center gap-5 py-8">
         <div className="max-w-screen-lg lg:w-1/3 relative">
           <div className="lg:w-96 bg-gray-600 p-4 text-center border rounded-lg shadow-md relative">
-            <img
-              src={user?.photoURL}
-              className=" h-24 w-24 mx-auto rounded-full mb-4"
-              alt="User Photo"
-            />
+            {/* Profile photo */}
+            {user?.photoURL ? (
+              <>
+                <img
+                  src={user?.photoURL}
+                  className=" h-24 w-24 mx-auto rounded-full mb-1"
+                  alt="User Photo"
+                />
+              </>
+            ) : (
+              <>
+                <img
+                  src={avatar}
+                  className=" h-24 w-24 mx-auto rounded-full mb-1"
+                  alt="User Photo"
+                />
+              </>
+            )}
+            {/* Last Login time */}
+            {user?.metadata?.lastSignInTime && (
+              <div>
+                <button className="btn btn-sm  mb-4">
+                  {moment(user?.metadata?.lastSignInTime)
+                    .startOf("day")
+                    .fromNow()}
+                </button>
+              </div>
+            )}
 
             {/* User Display Name */}
             {user?.displayName && (
@@ -66,6 +93,13 @@ const UserProfile = () => {
             {/* User Email */}
             {user?.email && (
               <h4 className="text-md text-gray-400">{user?.email}</h4>
+            )}
+
+            {/* Bio */}
+            {updateBio && (
+              <div className="my-4">
+                <p className="text-gray-300">{updateBio}</p>
+              </div>
             )}
 
             {/* Social Icon */}
@@ -100,7 +134,7 @@ const UserProfile = () => {
                     onClick={closeUpdateProfileHandler}
                     className="btn btn-sm btn-warning capitalize"
                   >
-                    Cancel Edit
+                    Close Edit
                   </button>
                 </>
               )}
@@ -120,7 +154,7 @@ const UserProfile = () => {
 
         {/* Update Profile container */}
         <div className={`w-80 lg:w-2/3 ${edit}`}>
-          <div className="p-2 border mx-auto rounded-lg shadow-md relative">
+          <div className="p-4 border mx-auto rounded-lg shadow-md relative">
             <form onSubmit={handleUpdateProfileData} className="card-body p-0">
               {/* Inputs */}
               <div className="grid grid-col lg:grid-cols-2 gap-4">
@@ -176,7 +210,7 @@ const UserProfile = () => {
                     type="textarea"
                     placeholder="Write About Yourself"
                     name="textarea"
-                    className="textarea textarea-bordered"
+                    className="textarea textarea-bordered textarea-xs"
                   />
                 </div>
               </div>
