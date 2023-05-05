@@ -7,13 +7,12 @@ import Spinner from "../pages/Shared/Spinner/Spinner";
 import { Toaster } from "react-hot-toast";
 
 const Main = () => {
-  const { user, loading } = useContext(AuthContext);
+  const {loading } = useContext(AuthContext);
 
-  if (user) {
     if (loading) {
       return <Spinner />;
     }
-  }
+  
 
   return (
     <>

@@ -8,7 +8,7 @@ const Advertisement = () => {
       <div
         className="hero min-h-lg"
         style={{
-          backgroundImage: `url(${advertisement})`,
+          backgroundImage: `url(https://i.ibb.co/WVJ7chg/advertisement.png)`,
         }}
       >
         <div className="hero-overlay bg-opacity-10"></div>
